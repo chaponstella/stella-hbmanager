@@ -7,7 +7,7 @@ Gestionnaire d'hôtels Hb-HotelManager
 {% block content %}
 
 
-<a href="">
+<a href="{{env.base_path}}">
     <i class="fa fa-arrow-left" aria-hidden="true"></i> retour à la liste
 </a>
 <!-- CAS 1 : La chambre est innoccupée -->
@@ -17,15 +17,13 @@ Gestionnaire d'hôtels Hb-HotelManager
     </div>
     <div class="card-body"> 
 
-        <form action="">
-
-            <div class="form-group">
-                <label for="formClient">Ajouter un client</label>
-                <select name="" id="formClient" class="form-control">
-                    <option value="">Emma Watson</option>
-                    <option value="">John Doe</option>
-                </select>
-            </div>
+        {% if room %}
+        <form action="{{ env.base_path ~ 'rooms/' ~ room.id ~ '/edit' }}" method="post" class="form">
+    {% else %}
+        <form action="{{ env.base_path ~ 'rooms/new/' }}" method="post" class="form">
+    {% endif %} 
+    
+          
 
             <button class="btn btn-primary">Ajouter le client à la chambre</button>
 
@@ -51,7 +49,7 @@ Gestionnaire d'hôtels Hb-HotelManager
         </p>
     </div>
     <div class="card-footer">
-        <a href="#" class="btn btn-danger">
+        <a href="" class="btn btn-danger">
             <i class="fa fa-trash" aria-hidden="true"></i> Supprimer la chambre
         </a>
     </div>

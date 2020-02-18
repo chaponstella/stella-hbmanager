@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block h1 %}
+Informations sur le Client:
+{% endblock %}
+
+  
+{% block content %}
+
+<ul>
+    <li>{{ client.id }}</li>
+  <li>{{ client.firstname }}</li>
+  <li> {{ client.lastname }}</li>
+  <li>{{ client.entry_date }}</li>
+  <li>{{ client.departure_date }}</li>
+</ul>
+
+<button class="ml-4 btn btn-warning"><a href={{env.base_path ~ '/clients/' ~ client.id ~ '/edit'}}> Editer</a></button>
+<button class="btn btn-dark"> <a href="{{env.base_path ~ '/clients/'}}"> Retour a la liste </a> </button>
+
+
+{% endblock %}
